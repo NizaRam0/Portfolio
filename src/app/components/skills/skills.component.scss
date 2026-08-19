@@ -1,0 +1,124 @@
+.skills__title {
+  font-size: var(--step-3);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem 2.5rem;
+}
+
+.skills__label {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+  margin-bottom: 0.7rem;
+}
+
+.skills__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.3rem 0.65rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.tag:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+@media (max-width: 800px) {
+  .skills__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 500px) {
+  .skills__grid { grid-template-columns: 1fr; }
+}
+
+/* ---- build manifest strip (moved from hero) ---- */
+.manifest {
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: 480px;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  box-shadow: 0 20px 60px -30px rgba(0, 0, 0, 0.5);
+}
+
+.manifest__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--bg-raised);
+}
+
+.manifest__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+.manifest__dot--r { background: #e5636b; }
+.manifest__dot--y { background: var(--amber); }
+.manifest__dot--g { background: #4cbf7a; }
+
+.manifest__title {
+  margin-left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+}
+
+.manifest__body {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.manifest__line {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--ink-dim);
+  display: flex;
+  gap: 0.6rem;
+  padding-block: 0.3rem;
+  opacity: 0;
+}
+
+/* animation only fires once the .manifest--play class is (re)added,
+   which lets the component replay it every time it scrolls into view */
+.manifest--play .manifest__line {
+  animation: manifest-in 0.4s ease forwards;
+  animation-delay: calc(var(--d) * 90ms + 150ms);
+}
+
+@keyframes manifest-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .manifest__line { opacity: 1; }
+}
+
+.manifest__ok { color: #4cbf7a; }
+.manifest__tag { color: var(--ink-faint); }
+.manifest__line--cursor { color: var(--ink); margin-top: 0.4rem; }
+
+.manifest__cursor {
+  display: inline-block;
+  color: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}

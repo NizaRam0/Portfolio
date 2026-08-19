@@ -1,0 +1,34 @@
+<section class="section" id="resume">
+  <div class="container">
+    <span class="eyebrow" appReveal>documents</span>
+    <h2 class="resume__title" appReveal [revealDelay]="60">CV &amp; cover letter</h2>
+
+    <div class="docs">
+      <article class="doc" appReveal>
+        <div class="doc__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M14 2v6h6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="doc__name">Curriculum Vitae</h3>
+        <p class="doc__desc">
+          Education, experience, and project details — updated August 2026.
+        </p>
+        <a class="doc__btn" href="assets/nizar-ramadan-cv.pdf" download>
+          Download CV <span class="doc__btn-arrow">&darr;</span>
+        </a>
+      </article>
+
+      <article class="doc" appReveal [revealDelay]="120">
+        <p class="doc__desc">
+          A general-purpose template — swap the bracketed fields before sending.
+        </p>
+        <a class="doc__btn" href="assets/nizar-ramadan-cover-letter-template.pdf" download>
+          Download template <span class="doc__btn-arrow">&darr;</span>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

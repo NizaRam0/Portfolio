@@ -1,0 +1,36 @@
+<section class="section" id="skills">
+  <div class="container">
+    <span class="eyebrow" appReveal>toolbox</span>
+    <h2 class="skills__title" appReveal [revealDelay]="60">What I build with</h2>
+
+    <div class="manifest" #manifestEl>
+      <div class="manifest__bar">
+        <span class="manifest__dot manifest__dot--r"></span>
+        <span class="manifest__dot manifest__dot--y"></span>
+        <span class="manifest__dot manifest__dot--g"></span>
+        <span class="manifest__title">build.log</span>
+      </div>
+      <div class="manifest__body">
+        <p class="manifest__line" style="--d:0"><span class="manifest__ok">✓</span> mobile <span class="manifest__tag">flutter · riverpod</span></p>
+        <p class="manifest__line" style="--d:1"><span class="manifest__ok">✓</span> web <span class="manifest__tag">angular · vue · next.js</span></p>
+        <p class="manifest__line" style="--d:2"><span class="manifest__ok">✓</span> backend <span class="manifest__tag">laravel · node · express</span></p>
+        <p class="manifest__line" style="--d:3"><span class="manifest__ok">✓</span> data <span class="manifest__tag">mysql · sqlite · sql server</span></p>
+        <p class="manifest__line" style="--d:4"><span class="manifest__ok">✓</span> ai <span class="manifest__tag">openai integration</span></p>
+        <p class="manifest__line manifest__line--cursor" style="--d:5">{{ cyclingText() }}<span class="manifest__cursor">_</span></p>
+      </div>
+    </div>
+
+    <div class="skills__grid">
+      @for (g of groups; track g.label; let i = $index) {
+        <div class="skills__group" appReveal [revealDelay]="i * 70">
+          <p class="skills__label">{{ g.label }}</p>
+          <div class="skills__tags">
+            @for (item of g.items; track item) {
+              <span class="tag">{{ item }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

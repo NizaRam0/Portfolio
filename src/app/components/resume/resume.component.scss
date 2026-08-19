@@ -1,0 +1,76 @@
+.resume__title {
+  font-size: var(--step-3);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.docs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.doc {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.doc:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  transform: translateY(-2px);
+}
+
+.doc__icon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.doc__name {
+  font-size: var(--step-1);
+  margin-bottom: 0.5rem;
+}
+
+.doc__desc {
+  color: var(--ink-dim);
+  font-size: var(--step--1);
+  line-height: 1.55;
+  margin-bottom: 1.4rem;
+  flex: 1;
+}
+
+.doc__btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.doc__btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.doc__btn-arrow {
+  color: var(--accent);
+}
+
+@media (max-width: 660px) {
+  .docs { grid-template-columns: 1fr; }
+}

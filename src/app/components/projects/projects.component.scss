@@ -1,0 +1,120 @@
+.section__title {
+  font-size: var(--step-3);
+  max-width: 16ch;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  transform: translateY(-2px);
+}
+
+.card__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.badge {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: #4cbf7a;
+  background: #4cbf7a1a;
+  border: 1px solid #4cbf7a33;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+.badge--building {
+  color: var(--amber);
+  background: var(--amber-dim);
+  border-color: #e8a33d33;
+}
+
+.card__name {
+  font-size: var(--step-1);
+}
+
+.card__problem {
+  color: var(--ink-dim);
+  font-size: var(--step--1);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.card__points {
+  list-style: none;
+  margin: 0 0 1.2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.card__points li {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  line-height: 1.5;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.card__points li::before {
+  content: "\2192";
+  position: absolute;
+  left: 0;
+  color: var(--ink-faint);
+}
+
+.card__footer {
+  border-top: 1px solid var(--line-soft);
+  padding-top: 0.9rem;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card__run {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  line-height: 1.5;
+}
+
+.card__run-label { color: var(--ink-dim); }
+
+.card__link {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--accent);
+  align-self: flex-start;
+}
+.card__link:hover { text-decoration: underline; }
+
+@media (max-width: 980px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 660px) {
+  .cards { grid-template-columns: 1fr; }
+}

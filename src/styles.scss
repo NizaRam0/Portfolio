@@ -1,0 +1,161 @@
+/* ============================================================
+   DESIGN TOKENS — "build log" system
+   ============================================================ */
+:root {
+  /* Color */
+  --bg: #12151a;
+  --bg-raised: #171b21;
+  --bg-inset: #0d0f13;
+  --ink: #edeff2;
+  --ink-dim: #8b93a1;
+  --ink-faint: #565d6b;
+  --line: #262b33;
+  --line-soft: #1c2028;
+  --accent: #4c7cf0;
+  --accent-dim: #4c7cf026;
+  --amber: #e8a33d;
+  --amber-dim: #e8a33d1f;
+
+  /* Type */
+  --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
+  --font-body: "IBM Plex Sans", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Scale */
+  --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem);
+  --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.4vw, 1.4rem);
+  --step-2: clamp(1.6rem, 1.4rem + 0.9vw, 2rem);
+  --step-3: clamp(2.2rem, 1.8rem + 1.8vw, 3.2rem);
+  --step-4: clamp(2.8rem, 2.1rem + 3vw, 4.6rem);
+
+  /* Layout */
+  --content-w: 1080px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --radius: 10px;
+
+  color-scheme: dark;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+[data-theme="light"] {
+  --bg: #f4f6fa;
+  --bg-raised: #ffffff;
+  --bg-inset: #eaeef4;
+  --ink: #12151a;
+  --ink-dim: #4a5568;
+  --ink-faint: #7c8595;
+  --line: #d9dfe8;
+  --line-soft: #e6eaf1;
+  --accent: #3a63d0;
+  --accent-dim: #3a63d01a;
+  --amber: #b3711a;
+  --amber-dim: #b3711a1a;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+
+  /* faint schematic grid, signature ambient texture */
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ink);
+}
+
+p { margin: 0; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  max-width: var(--content-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--ink-dim);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.9rem;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ============================================================
+   SCROLL REVEAL — used by appReveal directive
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

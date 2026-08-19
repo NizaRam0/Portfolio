@@ -1,0 +1,27 @@
+<header class="nav">
+  <div class="nav__inner container">
+    <a href="#top" class="nav__mark">
+      <span class="nav__mark-dot"></span>
+      nizar<span class="nav__mark-dim">.dev</span>
+    </a>
+    <nav class="nav__links">
+      <a href="#projects" [class.is-active]="activeId() === 'projects'">projects</a>
+      <a href="#about" [class.is-active]="activeId() === 'about'">about</a>
+      <a href="#skills" [class.is-active]="activeId() === 'skills'">skills</a>
+      <a href="#resume" [class.is-active]="activeId() === 'resume'">resume</a>
+      <a href="#contact" class="nav__cta" [class.is-active]="activeId() === 'contact'">contact</a>
+      <button
+        type="button"
+        class="theme-toggle"
+        (click)="theme.toggle()"
+        [attr.aria-label]="theme.theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+      >
+        @if (theme.theme() === 'dark') {
+          <span aria-hidden="true">&#9728;</span>
+        } @else {
+          <span aria-hidden="true">&#9789;</span>
+        }
+      </button>
+    </nav>
+  </div>
+</header>

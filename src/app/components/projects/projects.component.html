@@ -1,0 +1,37 @@
+<section class="section" id="projects">
+  <div class="container">
+    <span class="eyebrow" appReveal>selected work</span>
+    <h2 class="section__title" appReveal [revealDelay]="60">Things I've shipped</h2>
+
+    <div class="cards">
+      @for (p of projects; track p.name; let i = $index) {
+        <article class="card" appReveal [revealDelay]="i * 100">
+          <div class="card__head">
+            <span class="badge" [class.badge--building]="p.status === 'building'">
+              {{ p.status === 'shipped' ? '\u2713 shipped' : '\u25cf building' }}
+            </span>
+            <h3 class="card__name">{{ p.name }}</h3>
+          </div>
+
+          <p class="card__problem">{{ p.problem }}</p>
+
+          <ul class="card__points">
+            @for (pt of p.points; track pt) {
+              <li>{{ pt }}</li>
+            }
+          </ul>
+
+          <div class="card__footer">
+            <p class="card__run">
+              <span class="card__run-label">stack:</span>
+              {{ p.stack.join(' \u00b7 ') }}
+            </p>
+            @if (p.repo) {
+              <a [href]="p.repo" target="_blank" rel="noopener" class="card__link">view code &rarr;</a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
